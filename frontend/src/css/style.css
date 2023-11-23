@@ -1,3 +1,29 @@
+body {
+    background-color: #2b2b2b;
+}
+
+/*------------------------------------- HEADER -------------------------------------*/
 header form input[type=search]::placeholder {
     color: gray;
+}
+
+/*------------------------------------- MAIN -------------------------------------*/
+
+
+/*------------------------------------- FOOTER -------------------------------------*/
+
+footer .nav-item, .nav-link {
+    color: gray;
+}
+
+footer .nav-link:hover {
+
+    color: white;
+}
+
+.social-footer__list {
+    display: flex;
+    gap: 10px;
+    list-style: unset;
+    padding: 0;
 }

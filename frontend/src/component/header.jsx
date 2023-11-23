@@ -2,7 +2,7 @@ import React from 'react'
 
 const Header = () => {
     return (
-        <header className='p-3 text-bg-dark'>
+        <header className='nft-header p-3 text-bg-dark'>
             <div className='container'>
                 <div className='d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start'>
                     <a href='/' className='col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 text-white text-decoration-none keychainify-checked'>
