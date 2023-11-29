@@ -4,6 +4,9 @@ import { Routes, Route, BrowserRouter } from 'react-router-dom'
 import Header from './component/header'
 import Footer from './component/footer'
 import Home from './component/home'
+import Collection from './component/collection'
+import AllCollections from './component/AllCollections'
+
 import './bootstrap/css/bootstrap.min.css'
 import './bootstrap/js/bootstrap.bundle.min.js'
 import 'popper.js'
@@ -18,6 +21,9 @@ function App () {
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/home' element={<Home />} />
+                <Route path='/collection' element={<Collection />} />
+                <Route path='/collection/:collectionID' element={<AllCollections />} />
+
             </Routes>
             <Footer />
         </div>
