@@ -1,6 +1,7 @@
 const express = require('express')
 const axios = require('axios')
 const cors = require('cors')
+const myNft = require('./nft.json')
 
 // const express = require('express')
 
@@ -41,15 +42,16 @@ app.get('/collection', async (req, res) => {
         const response = await axios.get('https://api.opensea.io/api/v1/assets', {
             params: {
                 // order_direction: 'asc',
-                offset: '200',
+                offset: '0',
                 limit: '200'
             },
             headers: {
                 'X-API-KEY': apiKey
             }
         })
+        const openSeaData = response.data.assets
 
-        const collectionData = response.data.assets
+        const collectionData = [...openSeaData, ...myNft]
         // console.log('NFT Data:', nftData)
         const uniqueCollectionData = collectionData
             .filter(item => item.image_url !== null)
