@@ -5,7 +5,8 @@ import Header from './component/header'
 import Footer from './component/footer'
 import Home from './component/home'
 import Collection from './component/collection'
-import AllCollections from './component/AllCollections'
+import AllNftCollections from './component/allNftCollections.jsx'
+import DetailNft from './component/detailNft.jsx'
 
 import './bootstrap/css/bootstrap.min.css'
 import './bootstrap/js/bootstrap.bundle.min.js'
@@ -22,7 +23,8 @@ function App () {
                 <Route path='/' element={<Home />} />
                 <Route path='/home' element={<Home />} />
                 <Route path='/collection' element={<Collection />} />
-                <Route path='/collection/:collectionID' element={<AllCollections />} />
+                <Route path='/collection/:collectionID' element={<AllNftCollections />} />
+                <Route path='/collection/:collectionID/:nftID' element={<DetailNft />} />
 
             </Routes>
             <Footer />

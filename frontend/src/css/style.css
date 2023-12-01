@@ -19,6 +19,10 @@ body {
     /* color: #444444; */
 }
 
+.detail .description {
+    margin-top: 10px;
+}
+
 a,
 a:hover {
     text-decoration: none;
@@ -124,10 +128,10 @@ a:hover {
 
 .section-products .single-product .part-1 ul li a {
     display: inline-block;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    background-color: #ffffff;
+    /* width: 40px; */
+    /* height: 40px; */
+    /* line-height: 40px; */
+    /* background-color: #ffffff; */
     color: #444444;
     text-align: center;
     box-shadow: 0 2px 20px rgb(50 50 50 / 10%);
@@ -136,6 +140,9 @@ a:hover {
 
 .section-products .single-product .part-1 ul li a:hover {
     color: #fe302f;
+
+
+
 }
 
 .section-products .single-product .part-2 .product-title {

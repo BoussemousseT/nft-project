@@ -2,6 +2,7 @@ const express = require('express')
 const axios = require('axios')
 const cors = require('cors')
 const myNft = require('./nft.json')
+const lodash = require('lodash')
 
 // const express = require('express')
 
@@ -9,6 +10,42 @@ const app = express()
 const port = 8080
 const apiKey = 'e799484154784962a57c8860843221e6'
 app.use(cors())
+
+// Fonction pour mélanger aléatoirement un les donnees de nft.json
+function melangerAleatoirement (nftJson) {
+    return lodash.shuffle(nftJson)
+}
+app.get('/collection', async (req, res) => {
+    try {
+        const response = await axios.get('https://api.opensea.io/api/v1/assets', {
+            params: {
+                // order_direction: 'asc',
+                offset: '0',
+                limit: '200'
+            },
+            headers: {
+                'X-API-KEY': apiKey
+            }
+        })
+        const openSeaData = response.data.assets
+        const myNftAleatoirement = melangerAleatoirement(myNft)
+
+        const collectionData = [...openSeaData, ...myNftAleatoirement]
+        // console.log('NFT Data:', nftData)
+        const uniqueCollectionData = collectionData
+            .filter(item => item.image_url !== null)
+            .filter(item => item.collection.image_url !== null)
+            .filter((item, index, self) => index === self.findIndex(t => t.image_url === item.image_url))
+            .filter((item, index, self) => index === self.findIndex(t => t.collection.name === item.collection.name))
+
+        res.json(uniqueCollectionData)
+
+        // res.render('<h1>nft</h1>')
+    } catch (error) {
+        console.error('Error fetching NFT data:', error.message)
+        res.status(500).json({ error: 'Internal Server Error' }) // Send an error response
+    }
+})
 
 app.get('/collection/:collectionID', async (req, res) => {
     try {
@@ -37,29 +74,21 @@ app.get('/collection/:collectionID', async (req, res) => {
     }
 })
 
-app.get('/collection', async (req, res) => {
+app.get('/collection/:collectionID/:nftID', async (req, res) => {
     try {
-        const response = await axios.get('https://api.opensea.io/api/v1/assets', {
-            params: {
-                // order_direction: 'asc',
-                offset: '0',
-                limit: '200'
-            },
+        const { collectionID, nftID } = req.params // Extract collectionID from URL
+        const response = await axios.get(`https://api.opensea.io/api/v1/asset/${collectionID}/${nftID}/`, {
+
             headers: {
                 'X-API-KEY': apiKey
             }
         })
-        const openSeaData = response.data.assets
 
-        const collectionData = [...openSeaData, ...myNft]
-        // console.log('NFT Data:', nftData)
-        const uniqueCollectionData = collectionData
-            .filter(item => item.image_url !== null)
-            .filter(item => item.collection.image_url !== null)
-            .filter((item, index, self) => index === self.findIndex(t => t.image_url === item.image_url))
-            .filter((item, index, self) => index === self.findIndex(t => t.collection.name === item.collection.name))
-
-        res.json(uniqueCollectionData)
+        const nftData = response.data
+        // const uniquNftData = nftData
+        //     .filter(item => item.image_url !== null)
+        //     .filter((item, index, self) => index === self.findIndex(t => t.image_url === item.image_url))
+        res.json(nftData)
 
         // res.render('<h1>nft</h1>')
     } catch (error) {
