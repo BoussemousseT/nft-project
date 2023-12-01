@@ -12,8 +12,9 @@ const Donate = () => {
     // Exemple de trois images aléatoires pour le carrousel
     const carouselImages = [
         'https://www.protocol.com/media-library/an-nft-coin-changing-hands.png?id=29616228&width=1245&height=700&quality=85&coordinates=0%2C0%2C0%2C0',
-        'https://nftevening.com/wp-content/uploads/2021/10/NFT-Charity-Donations.jpeg',
-        'https://ips-dc.org/wp-content/uploads/2021/03/billionaire-charity-hands-putting-money-in-a-jar.jpeg'
+        'https://nftevening.com/wp-content/uploads/2021/10/NFT-Charity-Donations.jpeg'
+        // ,
+        // 'https://ips-dc.org/wp-content/uploads/2021/03/billionaire-charity-hands-putting-money-in-a-jar.jpeg'
     ]
 
     return (
