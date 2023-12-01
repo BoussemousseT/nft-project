@@ -22,7 +22,10 @@ const Header = () => {
 
                     <div className='text-end'>
                         <button type='button' className='btn btn-outline-light me-2'>Login</button>
-                        <button type='button' className='btn btn-warning'>Sign-up</button>
+                        <button type='button' className='btn btn-warning me-2'>Sign-up</button>
+                        {/* <button type='button' className='btn btn-secondary'>Donate 💸</button> */}
+                        <a class='btn btn-secondary' href='/donate' role='button'>Donate 💸</a>
+
                     </div>
                 </div>
             </div>
