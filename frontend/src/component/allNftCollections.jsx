@@ -33,7 +33,7 @@ const AllCollections = () => {
                     <div className='row justify-content-center text-center'>
                         <div className='col-md-8 col-lg-6'>
                             <div className='header'>
-                                <h1 className='page_headline'> Collections</h1>
+                                <h1 className='page_headline'>{nftData.length > 0 ? nftData[0].collection : ''} </h1>
                             </div>
                         </div>
                     </div>
@@ -43,33 +43,20 @@ const AllCollections = () => {
 
                                 <Link to={`/collection/${collectionID}/${item.identifier}`} className='collection-link'>
 
-                                    <div
-                                        id='product' className='single-product'
-                                        // style={{
-                                        //     backgroundImage: `url(${item.image_url})`
-                                        // }}
-                                    >
+                                    <div id='product' className='single-product'>
                                         <div
                                             className='part-1'
                                             style={{
                                                 backgroundImage: ` url(${item.image_url})`
                                             }}
-                                        >
-                                            <ul>
-                                                {/* <li><a href='#'><i className='fas fa-shopping-cart' /></a></li> */}
-                                                {/* <li><a className='btn btn-warning' target='_blank' href={'https://opensea.io/assets/ethereum/' + item.contract + '/' + item.identifier} role='button' rel='noreferrer'>Buy Now</a></li> */}
-                                                {/* <li><a href='#'><i className='fas fa-plus' /></a></li>
-                                            <li><a href='#'><i className='fas fa-expand' /></a></li> */}
-                                            </ul>
-                                        </div>
+                                        />
                                         <div className='part-2'>
                                             <h3 className='product-title'>
                                                 {item.name.length > maxCharacters
                                                     ? item.name.slice(0, maxCharacters) + '...'
                                                     : item.name}
                                             </h3>
-                                            {/* <h4 className='product-old-price'>$79.99</h4>
-                                        <h4 className='product-price'>$49.99</h4> */}
+
                                         </div>
                                     </div>
                                 </Link>
