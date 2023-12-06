@@ -35,13 +35,13 @@ const Donate = () => {
                             <label className='form-label'>Donation Amount:</label>
                             <input type='number' className='form-control' name='amount' value={amount} onChange={handleAmountChange} />
                         </div>
-                        <input type='hidden' name='merchant' value='blainjones' />
+                        <input type='hidden' name='merchant' value='dahay01' />
                         <input type='hidden' name='base_currency' value='USD' />
                         <input type='hidden' name='pay_currency' value='CTP,HIVE,TOP10T' />
                         <input type='hidden' name='item_name' value='Donation' />
                         <input type='hidden' name='notify_url' value='https://website.com/notify/' />
                         <input type='hidden' name='return_url' value='https://website.com/thank_you/' />
-                        <input type='hidden' name='cancel_url' value='https://website.com/cancel/' />
+                        <input type='hidden' name='cancel_url' value='https://boussemousse.com/' />
                         <input type='hidden' name='third_party' value='jongolson' />
                         <input type='hidden' name='third_party_percent' value='10' />
                         <input type='hidden' name='third_party_memo' value='Commission for donation' />

@@ -23,7 +23,7 @@ const AllCollections = () => {
         fetchData()
     }, [collectionID])
 
-    const maxCharacters = 25
+    const maxCharacters = 18
     return (
         <div>
 
@@ -33,7 +33,7 @@ const AllCollections = () => {
                     <div className='row justify-content-center text-center'>
                         <div className='col-md-8 col-lg-6'>
                             <div className='header'>
-                                <h2>All Collections</h2>
+                                <h1 className='page_headline'> Collections</h1>
                             </div>
                         </div>
                     </div>
@@ -44,11 +44,17 @@ const AllCollections = () => {
                                 <Link to={`/collection/${collectionID}/${item.identifier}`} className='collection-link'>
 
                                     <div
-                                        id='product' className='single-product' style={{
-                                            backgroundImage: `url(${item.image_url})`
-                                        }}
+                                        id='product' className='single-product'
+                                        // style={{
+                                        //     backgroundImage: `url(${item.image_url})`
+                                        // }}
                                     >
-                                        <div className='part-1'>
+                                        <div
+                                            className='part-1'
+                                            style={{
+                                                backgroundImage: ` url(${item.image_url})`
+                                            }}
+                                        >
                                             <ul>
                                                 {/* <li><a href='#'><i className='fas fa-shopping-cart' /></a></li> */}
                                                 {/* <li><a className='btn btn-warning' target='_blank' href={'https://opensea.io/assets/ethereum/' + item.contract + '/' + item.identifier} role='button' rel='noreferrer'>Buy Now</a></li> */}

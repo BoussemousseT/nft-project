@@ -11,9 +11,9 @@ const Header = () => {
                         </svg>
                     </a>
                     <ul className='nav col-lg-auto me-lg-auto'>
-                        <li><a href='/collection' className='nav-link px-2 text-white keychainify-checked'>Collection</a></li>
-                        <li><a href='/about' className='nav-link px-2 text-white keychainify-checked'>About</a></li>
-                        <li><a href='/contact' className='nav-link px-2 text-white keychainify-checked'>Contact us</a></li>
+                        <li><a href='/collection' className='nav-link px-2  keychainify-checked'>Collection</a></li>
+                        <li><a href='/about' className='nav-link px-2 keychainify-checked'>About</a></li>
+                        <li><a href='/contact' className='nav-link px-2 keychainify-checked'>Contact us</a></li>
                     </ul>
 
                     <form className='col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3' role='search'>

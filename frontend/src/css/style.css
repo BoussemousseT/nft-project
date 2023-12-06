@@ -1,3 +1,26 @@
+@font-face {
+    font-family: 'Designer';
+    src: url('../fonts/Designer.eot');
+    src: url('../fonts/Designer.eot') format('embedded-opentype'),
+        url('../fonts/Designer.woff2') format('woff2'),
+        url('../fonts/Designer.woff') format('woff'),
+        url('../fonts/Designer.ttf') format('truetype'),
+        url('../fonts/Designer.svg#Designer') format('svg');
+}
+
+
+@keyframes selectProduct {
+    0% {
+        background: rgba(128, 128, 128, 0.129) no-repeat center;
+        scale: 1.0;
+    }
+
+    100% {
+        background: rgba(128, 128, 128, 0.772) no-repeat center;
+        scale: 1.05;
+    }
+}
+
 body {
     background-color: #2b2b2b;
     color: white;
@@ -6,6 +29,22 @@ body {
 /*------------------------------------- HEADER -------------------------------------*/
 header form input[type=search]::placeholder {
     color: gray;
+    font-family: 'Designer';
+
+}
+
+header .nav-link {
+    color: white;
+    font-size: 1.2rem;
+    font-family: 'Designer';
+
+}
+
+header .nav-link:hover {
+    color: #ffc107;
+    border-bottom: #ffc107 3px solid;
+    padding-bottom: 0;
+    border-radius: 10px;
 }
 
 /*------------------------------------- MAIN -------------------------------------*/
@@ -77,8 +116,37 @@ a:hover {
 }
 
 .section-products #product {
-    background: no-repeat center;
-    background-size: 250px;
+    border: #ffc10700 2px solid;
+    text-align: center;
+    background: rgba(128, 128, 128, 0.129) no-repeat center;
+    border-radius: 10px;
+    padding: 10px;
+
+}
+
+
+
+.section-products #product:hover {
+    /* box-sizing: content-box; */
+    scale: 1.05;
+    background: rgba(128, 128, 128, 0.772) no-repeat center;
+
+    /* border: #ffc107 2px solid; */
+    border-radius: 10px;
+    animation: selectProduct 1s;
+
+
+    /* animation-duration: 2s;
+    animation-iteration-count: infinite; */
+}
+
+
+.section-products #product .part-1 {
+
+    background: rgba(128, 128, 128, 0.129) no-repeat center;
+    border-radius: 10px;
+
+    background-size: cover;
     transition: all 0.3s;
     padding: 10px;
     /* border-radius: 10px;
@@ -145,8 +213,15 @@ a:hover {
 
 }
 
+.section-products .page_headline, .btn {
+    font-family: 'Designer';
+    /* color: #ffc107; */
+}
+
 .section-products .single-product .part-2 .product-title {
     font-size: 1rem;
+    font-family: 'Designer';
+
 }
 
 .section-products .single-product .part-2 h4 {

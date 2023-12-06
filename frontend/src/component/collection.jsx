@@ -18,7 +18,7 @@ const Collection = () => {
         fetchData()
     }, [])
 
-    const maxCharacters = 25
+    const maxCharacters = 18
 
     return (
         <div>
@@ -27,7 +27,7 @@ const Collection = () => {
                     <div className='row justify-content-center text-center'>
                         <div className='col-md-8 col-lg-6'>
                             <div className='header'>
-                                <h2>Collections</h2>
+                                <h1 className='page_headline'>All Collections</h1>
                             </div>
                         </div>
                     </div>
@@ -37,11 +37,18 @@ const Collection = () => {
                                 <Link to={`/collection/${item.asset_contract.address}`} className='collection-link'>
 
                                     <div
-                                        id='product' className='single-product' style={{
-                                            backgroundImage: `url(${item.collection.image_url})`
-                                        }}
+                                        id='product' className='single-product'
+                                        // style={{
+                                        //     backgroundImage: `url(${item.collection.image_url})`
+                                        // }}
                                     >
-                                        <div className='part-1'>
+                                        <div
+                                            className='part-1'
+                                            style={{
+                                                backgroundImage: `url(${item.collection.image_url})`
+                                            }}
+                                        >
+
                                             {/* <ul>
                                             <li><a href='#'><i className='fas fa-shopping-cart' /></a></li>
                                             <li><a href='#'><i className='fas fa-heart' /></a></li>
