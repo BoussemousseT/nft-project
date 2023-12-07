@@ -26,6 +26,8 @@ body {
     color: white;
 }
 
+
+
 /*------------------------------------- HEADER -------------------------------------*/
 header form input[type=search]::placeholder {
     color: gray;
@@ -57,6 +59,19 @@ body {
     font-family: "Poppins", sans-serif;
     /* color: #444444; */
 }
+
+.detail .container {
+    background: rgba(128, 128, 128, 0.129) no-repeat center;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.detail .buttons-details {
+    display: flex;
+    justify-content: end;
+}
+
+/* .detail .buttons-details .btn {} */
 
 .detail .description {
     margin-top: 10px;
@@ -116,7 +131,7 @@ a:hover {
 }
 
 .section-products #product {
-    border: #ffc10700 2px solid;
+    /* border: #ffc10700 2px solid; */
     text-align: center;
     background: rgba(128, 128, 128, 0.129) no-repeat center;
     border-radius: 10px;
@@ -213,7 +228,7 @@ a:hover {
 
 }
 
-.section-products .page_headline, .btn {
+.page_headline, .btn {
     font-family: 'Designer';
     /* color: #ffc107; */
 }

@@ -26,24 +26,25 @@ const DetailNft = () => {
 
             <section className='py-5'>
                 <div className='container'>
-                    <div className='row gx-5'>
-                        <aside className='col-lg-6'>
-                            <img style={{ maxWidth: '100%', maxHeight: '100vh', margin: 'auto', borderRadius: '15px' }} src={nftData.image_url} />
+                    <div className='row'>
+                        <aside className='col-lg-4'>
+                            <img style={{ maxWidth: '100%', maxHeight: '512px', margin: 'auto', borderRadius: '15px' }} src={nftData.image_url} />
 
                         </aside>
-                        <main className='col-lg-6'>
+                        <main className='col-lg-8'>
                             <div className='ps-lg-3'>
-                                <h2 className='title text-light'>
+                                <h2 className='title text-light page_headline'>
                                     {nftData.name}
                                 </h2>
 
-                                <Link to={`/collection/${collectionID}`} className='text-info'>{nftData?.collection?.name}</Link>
+                                <Link to={`/collection/${collectionID}`} className='text-info '>{nftData?.collection?.name}</Link>
                                 <p className='description'>
                                     {nftData.description}
                                 </p>
-
-                                <Link to={`https://opensea.io/assets/ethereum/${collectionID}/${nftID}`} target='_blank' className='btn btn-warning shadow-0'> Buy now </Link>
-                                <a href='#' className='btn btn-light border icon-hover px-3' style={{ marginLeft: '.5rem' }}>❤️</a>
+                                <div className='buttons-details'>
+                                    <Link to={`https://opensea.io/assets/ethereum/${collectionID}/${nftID}`} target='_blank' className='btn btn-warning shadow-0'> Buy now </Link>
+                                    <a href='#' className='btn btn-light border icon-hover px-3' style={{ marginLeft: '.5rem' }}>❤️</a>
+                                </div>
                             </div>
                         </main>
                     </div>

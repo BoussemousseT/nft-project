@@ -34,6 +34,7 @@ app.get('/collection', async (req, res) => {
         // console.log('NFT Data:', nftData)
         const uniqueCollectionData = collectionData
             .filter(item => item.image_url !== null)
+            .filter(item => item.name !== null)
             .filter(item => item.collection.image_url !== null)
             .filter((item, index, self) => index === self.findIndex(t => t.image_url === item.image_url))
             .filter((item, index, self) => index === self.findIndex(t => t.collection.name === item.collection.name))
