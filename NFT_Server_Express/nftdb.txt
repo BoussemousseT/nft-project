@@ -1,0 +1,21 @@
+CREATE TABLE users(
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) DEFAULT NULL,
+    email  TEXT DEFAULT NULL,
+    password  TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS nfts(    id  SERIAL PRIMARY KEY ,
+	user_id integer NULL DEFAULT 0,
+	nft_serial  TEXT NOT NULL, 
+	constraint fk_user_nft FOREIGN KEY(user_id) REFERENCES users(id)
+);
+
+
+CREATE TABLE IF NOT EXISTS nfts(    id  SERIAL PRIMARY KEY ,
+	user_id integer NOT NULL DEFAULT 0,
+	nft_id integer NOT NULL DEFAULT 0,
+	added_date TIMESTAMPTZ DEFAULT Now(),
+	constraint fk_user_cart FOREIGN KEY(user_id) REFERENCES carts(id),
+	constraint fk_nft_cart FOREIGN KEY(nft_id) REFERENCES carts(id)
+);

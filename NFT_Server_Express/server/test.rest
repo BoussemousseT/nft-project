@@ -1,0 +1,57 @@
+//cas des  users
+
+###
+POST http://localhost:8080/users HTTP/1.1
+content-type: application/json
+
+{ "name":"Taoufik", "email":"taoufik@nft.io", "password":"taoufik"}
+
+###
+POST http://localhost:8080/users HTTP/1.1
+content-type: application/x-www-form-urlencoded
+
+name=Tai&email=tai@nft.io&password=tai
+
+###
+GET http://localhost:8080/users HTTP/1.1
+
+###
+GET http://localhost:8080/users/tai@nft.io HTTP/1.1
+
+###
+PUT http://localhost:8080/users/taoufik@nft.io HTTP/1.1
+content-type: application/json
+
+{ "name":"Taoufik", "email":"taoufik@nft.io", "password":"12345"}
+
+###
+DELETE http://localhost:8080/users/taoufik@nft.io HTTP/1.1
+
+
+// Cas des nfts
+
+
+###
+POST http://localhost:8080/nfts HTTP/1.1
+content-type: application/json
+
+{ "user_id":8, "nft_serial":"uhwk846832jnvi"}
+
+###
+POST http://localhost:8080/nfts HTTP/1.1
+content-type: application/x-www-form-urlencoded
+
+user_id=9&nft_serial=122535jdtr1
+
+###
+GET http://localhost:8080/nfts HTTP/1.1
+
+###
+GET http://localhost:8080/nfts/9 HTTP/1.1
+
+
+###
+DELETE http://localhost:8080/nfts/9 HTTP/1.1
+
+
+
