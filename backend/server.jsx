@@ -98,6 +98,37 @@ app.get('/collection/:collectionID/:nftID', async (req, res) => {
     }
 })
 
+app.all('/nowpayments', async (req, res) => {
+    const amount = req.query.name
+    try {
+        const response = await axios.post(
+            'https://api.nowpayments.io/v1/invoice',
+            {
+                price_amount: amount,
+                price_currency: 'usd',
+                order_id: 'RGDBP-21314',
+                order_description: 'Donation',
+                ipn_callback_url: 'https://nowpayments.io',
+                success_url: 'https://nowpayments.io',
+                cancel_url: 'https://nowpayments.io',
+                partially_paid_url: 'https://nowpayments.io',
+                is_fixed_rate: true,
+                is_fee_paid_by_user: false
+            },
+            {
+                headers: {
+                    'x-api-key': '811CNVY-8ZC411P-KEGN5BB-3RKJW3H',
+                    'Content-Type': 'application/json'
+                }
+            }
+        )
+        res.redirect(response.data.invoice_url)
+    } catch (error) {
+        console.error('Error processing NowPayments request:', error.message)
+        res.status(500).json({ error: 'Internal Server Error' })
+    }
+})
+
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`)
 })

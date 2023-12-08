@@ -16,6 +16,10 @@ const Donate = () => {
         // ,
         // 'https://ips-dc.org/wp-content/uploads/2021/03/billionaire-charity-hands-putting-money-in-a-jar.jpeg'
     ]
+    const handleNowPaymentsButtonClick = () => {
+        // Redirect to /nowpayments route with the 'name' parameter
+        window.location.href = `http://localhost:8080/nowpayments?name=${encodeURIComponent(amount)}`
+    }
 
     return (
         <div className='donate container mt-5'>
@@ -28,9 +32,9 @@ const Donate = () => {
                     <h2>Description</h2>
                     <p>
                         Thank you for considering a donation. Your support helps us continue our mission and make a positive impact.
-
                     </p>
                     <form method='post' action='https://hivepay.io/pay/'>
+
                         <div className='mb-3 '>
                             <label className='form-label'>Donation Amount:</label>
                             <input type='number' className='form-control' name='amount' value={amount} onChange={handleAmountChange} />
@@ -46,8 +50,12 @@ const Donate = () => {
                         <input type='hidden' name='third_party_percent' value='10' />
                         <input type='hidden' name='third_party_memo' value='Commission for donation' />
 
-                        <button type='submit' className='btn btn-primary'>Donate 💸</button>
-
+                        <button type='submit' className='hivepaybutton'>
+                            <img src='https://hivepay.io/buttons/16.png' />
+                        </button>
+                        <button type='button' className='nowpaymentsbutton' onClick={handleNowPaymentsButtonClick}>
+                            <img src='https://nowpayments.io/images/embeds/donation-button-black.svg' alt='Now Payments' />
+                        </button>
                     </form>
                 </div>
                 <div className='col-md-6'>

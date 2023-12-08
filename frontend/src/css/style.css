@@ -55,6 +55,15 @@ header .nav-link:hover {
     border-radius: 30px;
 }
 
+/*-------------------------- DONATE PAGE ---------------------------*/
+.donate .hivepaybutton {
+    margin: 0;
+    padding: 0;
+    /* outline-color: #fe302f */
+    border: unset;
+    border-radius: 10px;
+}
+
 /*-------------------------- MAIN  Collections Products ---------------------------*/
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
