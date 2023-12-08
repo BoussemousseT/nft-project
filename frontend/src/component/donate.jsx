@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Carousel } from 'react-bootstrap'
+import sweetalert from 'sweetalert2'
 
 const Donate = () => {
     const [amount, setAmount] = useState('')
@@ -18,27 +19,33 @@ const Donate = () => {
     ]
     const handleNowPaymentsButtonClick = () => {
         // Redirect to /nowpayments route with the 'name' parameter
-        window.location.href = `http://localhost:8080/nowpayments?name=${encodeURIComponent(amount)}`
+        if (amount !== '') {
+            window.location.href = `http://localhost:8080/nowpayments?name=${encodeURIComponent(amount)}`
+            console.log('amount', amount)
+        } else {
+            sweetalert.fire({
+                title: 'Invalid Input',
+                text: 'Please fill in all fields correctly.',
+                icon: 'error'
+            })
+        }
     }
 
     return (
         <div className='donate container mt-5'>
             <div className='text-center'>
-                <h2 className='mb-4'>Make a Donation</h2>
+                <h2 className='mb-5 page_headline'>Make a Donation</h2>
             </div>
             <div className='row'>
 
-                <div className='col-md-6'>
+                <div className='col-md-4'>
                     <h2>Description</h2>
                     <p>
                         Thank you for considering a donation. Your support helps us continue our mission and make a positive impact.
                     </p>
                     <form method='post' action='https://hivepay.io/pay/'>
 
-                        <div className='mb-3 '>
-                            <label className='form-label'>Donation Amount:</label>
-                            <input type='number' className='form-control' name='amount' value={amount} onChange={handleAmountChange} />
-                        </div>
+                        <input type='number' className='form-control mb-3' name='amount' value={amount} onChange={handleAmountChange} placeholder='Donation Amount ($)' min={1} required />
                         <input type='hidden' name='merchant' value='dahay01' />
                         <input type='hidden' name='base_currency' value='USD' />
                         <input type='hidden' name='pay_currency' value='CTP,HIVE,TOP10T' />
@@ -50,15 +57,15 @@ const Donate = () => {
                         <input type='hidden' name='third_party_percent' value='10' />
                         <input type='hidden' name='third_party_memo' value='Commission for donation' />
 
-                        <button type='submit' className='hivepaybutton'>
-                            <img src='https://hivepay.io/buttons/16.png' />
+                        <button type='submit' className='donateButton hivepaybutton mb-3'>
+                            <img src='../../../public/images/hivepayDonate.png' />
                         </button>
-                        <button type='button' className='nowpaymentsbutton' onClick={handleNowPaymentsButtonClick}>
-                            <img src='https://nowpayments.io/images/embeds/donation-button-black.svg' alt='Now Payments' />
+                        <button type='button' className='donateButton nowpaymentsbutton mb-3' onClick={handleNowPaymentsButtonClick}>
+                            <img src='../../../public/images/nowPaymentDonate.png' alt='Now Payments' />
                         </button>
                     </form>
                 </div>
-                <div className='col-md-6'>
+                <div className='col-md-8'>
                     <Carousel>
                         {carouselImages.map((image, index) => (
                             <Carousel.Item key={index}>

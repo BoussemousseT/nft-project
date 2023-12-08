@@ -100,6 +100,7 @@ app.get('/collection/:collectionID/:nftID', async (req, res) => {
 
 app.all('/nowpayments', async (req, res) => {
     const amount = req.query.name
+    console.log('amount', amount)
     try {
         const response = await axios.post(
             'https://api.nowpayments.io/v1/invoice',
