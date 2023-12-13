@@ -417,6 +417,10 @@ header .nav-link:hover {
 
 
 
+.grad {
+    background-image: linear-gradient(to right, #3b3b3b, #3b3b3b);
+}
+
 /*-------------------------- MAIN  Collections Products ---------------------------*/
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
