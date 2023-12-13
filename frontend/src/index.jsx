@@ -8,6 +8,7 @@ import Collection from './component/collection'
 import AllNftCollections from './component/allNftCollections.jsx'
 import DetailNft from './component/detailNft.jsx'
 import Donate from './component/donate.jsx'
+import Login from './component/login.jsx'
 
 import './bootstrap/css/bootstrap.min.css'
 import './bootstrap/js/bootstrap.bundle.min.js'
@@ -27,6 +28,7 @@ function App () {
                 <Route path='/collection/:collectionID' element={<AllNftCollections />} />
                 <Route path='/collection/:collectionID/:nftID' element={<DetailNft />} />
                 <Route path='/donate' element={<Donate />} />
+                <Route path='/login' element={<Login />} />
 
             </Routes>
             <Footer />

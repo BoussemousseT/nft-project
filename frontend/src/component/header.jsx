@@ -21,9 +21,9 @@ const Header = () => {
                     </form>
 
                     <div className='text-end'>
-                        <button type='button' className='btn btn-outline-light me-2'>Login</button>
-                        <button type='button' className='btn btn-warning me-2'>Sign-up</button>
-                        {/* <button type='button' className='btn btn-secondary'>Donate 💸</button> */}
+                        {/* <button type='button' className='btn btn-outline-light me-2'>Login</button> */}
+                        <a href='/login' className='btn btn-outline-light me-2'>Login</a>
+                        <a href='/login' className='btn btn-warning me-2'>Sign-up</a>
                         <a className='btn btn-secondary' href='/donate' role='button'>Donate 💸</a>
 
                     </div>
