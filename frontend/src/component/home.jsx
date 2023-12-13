@@ -14,7 +14,7 @@ const Home = () => {
         <main className='homepage'>
             <div className='container'>
                 {/* section 1 */}
-                <div className='col-xxl-12 px-4 py-5'>
+                <div className='col-xxl-12 px-4'>
                     <div className='row flex-lg-row-reverse align-items-center g-5 py-5'>
                         <div id='carouselExampleInterval' className='carousel slide col-10 col-sm-8 col-lg-6' data-bs-ride='carousel'>
                             <div className='carousel-inner'>
@@ -38,36 +38,75 @@ const Home = () => {
                             </button>
                         </div>
                         <div className='col-lg-6'>
-                            <h1 className='display-5 fw-bold text-body-emphasis lh-1 mb-3'>Responsive left-aligned hero with image</h1>
-                            <p className='lead'>Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
+                            <h1 className='display-5 fw-bold  lh-1 mb-3 text-white'>Discover digital art & Collect NFTs</h1>
+                            <p className='lead'>NFT marketplace UI created with Anima for Figma. Collect, buy and sell art from more than 20k NFT artists.</p>
                             <div className='d-grid gap-2 d-md-flex justify-content-md-start'>
-                                <button type='button' className='btn btn-primary btn-lg px-4 me-md-2'>Show more</button>
+                                <button type='button' className='btn btn-primary btn-lg px-4 me-md-2' data-bs-toggle='collapse' href='#collapseExample' role='button' aria-expanded='false' aria-controls='collapseExample'>Show more</button>
                             </div>
                         </div>
                     </div>
                 </div>
                 {/* section 2 */}
-                <div className='row row-cols-1 row-cols-md-3 g-4'>
-                    {randomCollection.map((item) => (
-                        <div key={item.id} className='col'>
-                            <div className='card h-100'>
-                                <img src={item.asset_contract.image_url} className='card-img-top' alt='...' />
-                                <div className='row'>
-                                    {randomCollection.map((item) => (
+                <div className='collapse' id='collapseExample'>
+                    <div className='row g-4 pb-5'>
+                        <h2>Trending Collection</h2>
+                        <p>Checkout Our Weekly Updated Trending Collection.</p>
+                    </div>
+                    <div className='row row-cols-1 row-cols-md-3 g-4'>
+                        {randomCollection.map((item, index) => (
+                            <div key={index} className='col'>
+                                <div className='card h-100'>
+                                    <img src={item.collection.image_url} className='card-img-top' alt='...' />
+                                    {/* <div className='row'>
+                                    {randomCollection.map((item,index) => (
 
-                                        <div key={item.id} className='col-md-6 col-lg-4 col-xl-4'>
+                                        <div key={index} className='col-md-6 col-lg-4 col-xl-4'>
                                             <div className='col'>
-                                                <img src={item.asset_contract.image_url} className='card-img-top' alt='...' />
+                                                <img src={item.collection.image_url} className='card-img-top' alt='...' />
                                             </div>
                                         </div>
                                     ))}
+                                </div> */}
+                                </div>
+                            </div>
+                        ))}
+
+                    </div>
+                    {/* section 3 */}
+                    <div className='row g-4 py-5'>
+                        <h2>How It Works</h2>
+                        <p>Find Out How To Get Started</p>
+                    </div>
+                    <div className='row row-cols-1 row-cols-md-3 g-4 pb-5'>
+                        <div className='col'>
+                            <div className='card h-100 bg-secondary  grad'>
+                                <img src='public/images/category/works1.svg' className='card-img-top my-5' alt='works1' width='350' height='350' />
+                                <div className='card-body text-white'>
+                                    <h3 className='card-title'>Setup Your Wallet</h3>
+                                    <p className='card-text'>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                                 </div>
                             </div>
                         </div>
-                    ))}
-
+                        <div className='col'>
+                            <div className='card h-100 bg-secondary  grad'>
+                                <img src='public/images/category/works2.svg' className='card-img-top my-5' alt='works2' width='350' height='350' />
+                                <div className='card-body text-white'>
+                                    <h3 className='card-title'>Create Collection</h3>
+                                    <p className='card-text'>This card has supporting text below as a natural lead-in to additional content.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className='col'>
+                            <div className='card h-100 bg-secondary grad'>
+                                <img src='public/images/category/works3.svg' className='card-img-top my-5' alt='works3' width='350' height='350' />
+                                <div className='card-body text-white'>
+                                    <h3 className='card-title'>Start Earning</h3>
+                                    <p className='card-text'>This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                {/* section 3 */}
             </div>
         </main>
     )
