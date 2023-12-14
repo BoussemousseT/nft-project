@@ -3,6 +3,7 @@ import React from 'react'
 const Header = () => {
     return (
         <header className='nft-header p-3 text-bg-dark'>
+
             <div className='container'>
                 <div className='d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start'>
                     <a href='/' className='col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 text-white text-decoration-none keychainify-checked'>
@@ -11,7 +12,7 @@ const Header = () => {
                         </svg>
                     </a>
                     <ul className='nav col-lg-auto me-lg-auto'>
-                        <li><a href='/collection' className='nav-link px-2  keychainify-checked'>Collection</a></li>
+                        <li><a href='/collection' className='nav-link px-2 keychainify-checked'>Collection</a></li>
                         <li><a href='/about' className='nav-link px-2 keychainify-checked'>About</a></li>
                         <li><a href='/contact' className='nav-link px-2 keychainify-checked'>Contact us</a></li>
                     </ul>
@@ -22,10 +23,9 @@ const Header = () => {
 
                     <div className='text-end'>
                         {/* <button type='button' className='btn btn-outline-light me-2'>Login</button> */}
-                        <a href='/login' className='btn btn-outline-light me-2'>Login</a>
-                        <a href='/login' className='btn btn-warning me-2'>Sign-up</a>
+                        <a href='/account/login' className='btn btn-outline-light me-2' data-target='login'>Login</a>
+                        <a href='/account/signup' className='btn btn-warning me-2' data-target='signup'>Sign-up</a>
                         <a className='btn btn-secondary' href='/donate' role='button'>Donate 💸</a>
-
                     </div>
                 </div>
             </div>

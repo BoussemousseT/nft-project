@@ -44,9 +44,9 @@ header .nav-link {
 
 header .nav-link:hover {
     color: #ffc107;
-    border-bottom: #ffc107 3px solid;
+    /* border-bottom: #ffc107 3px solid; */
     padding-bottom: 0;
-    border-radius: 10px;
+    /* border-radius: 10px; */
 }
 
 /*------------------------------------- MAIN -------------------------------------*/
