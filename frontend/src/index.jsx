@@ -8,7 +8,7 @@ import Collection from './component/collection'
 import AllNftCollections from './component/allNftCollections.jsx'
 import DetailNft from './component/detailNft.jsx'
 import Donate from './component/donate.jsx'
-import Login from './component/login.jsx'
+import Account from './component/account.jsx'
 
 import './bootstrap/css/bootstrap.min.css'
 import './bootstrap/js/bootstrap.bundle.min.js'
@@ -18,6 +18,7 @@ import About from './component/about.jsx'
 
 const container = document.getElementById('root')
 const root = createRoot(container)
+
 function App () {
     return (
         <div>
@@ -29,7 +30,7 @@ function App () {
                 <Route path='/collection/:collectionID' element={<AllNftCollections />} />
                 <Route path='/collection/:collectionID/:nftID' element={<DetailNft />} />
                 <Route path='/donate' element={<Donate />} />
-                <Route path='/login' element={<Login />} />
+                <Route path='/account/:connexion' element={<Account />} />
                 <Route path='/about' element={<About />} />
 
             </Routes>
@@ -37,6 +38,7 @@ function App () {
         </div>
     )
 }
+
 root.render(
     <BrowserRouter>
         <App />

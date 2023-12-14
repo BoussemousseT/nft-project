@@ -3,6 +3,7 @@ const axios = require('axios')
 const cors = require('cors')
 const myNft = require('./nft.json')
 const lodash = require('lodash')
+const bodyParser = require('body-parser')
 
 // const express = require('express')
 
@@ -10,6 +11,7 @@ const app = express()
 const port = 8080
 const apiKey = 'e799484154784962a57c8860843221e6'
 app.use(cors())
+app.use(bodyParser.urlencoded({ extended: true }))
 
 // Fonction pour mélanger aléatoirement un les donnees de nft.json
 function melangerAleatoirement (nftJson) {
@@ -128,6 +130,24 @@ app.all('/nowpayments', async (req, res) => {
         console.error('Error processing NowPayments request:', error.message)
         res.status(500).json({ error: 'Internal Server Error' })
     }
+})
+
+app.post('/signup', async (req, res) => {
+    const email = req.body.registeremail
+    const body = req.body
+
+    console.log('registeremail', email)
+    console.log('body', body)
+    res.redirect('http://localhost:8081/')
+})
+
+app.post('/login', async (req, res) => {
+    const email = req.body.logemail
+    const body = req.body
+
+    console.log('logemail', email)
+    console.log('body', body)
+    res.redirect('http://localhost:8081')
 })
 
 app.listen(port, () => {
