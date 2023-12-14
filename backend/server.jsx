@@ -17,7 +17,7 @@ function melangerAleatoirement (nftJson) {
 }
 app.get('/collection', async (req, res) => {
     try {
-        const response = await axios.get('https://api.opensea.io/api/v1/assets', {
+        const response = await axios.get('https://api.opensea.io/api/v2/assets', {
             params: {
                 // order_direction: 'asc',
                 offset: '0',

@@ -14,6 +14,7 @@ import './bootstrap/css/bootstrap.min.css'
 import './bootstrap/js/bootstrap.bundle.min.js'
 import 'popper.js'
 import './css/style.css'
+import About from './component/about.jsx'
 
 const container = document.getElementById('root')
 const root = createRoot(container)
@@ -29,6 +30,7 @@ function App () {
                 <Route path='/collection/:collectionID/:nftID' element={<DetailNft />} />
                 <Route path='/donate' element={<Donate />} />
                 <Route path='/login' element={<Login />} />
+                <Route path='/about' element={<About />} />
 
             </Routes>
             <Footer />

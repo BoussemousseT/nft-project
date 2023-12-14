@@ -72,6 +72,16 @@ header .nav-link:hover {
     /* margin: 5px; */
 }
 
+/*------------------------------------- Login About -------------------------------------*/
+.about .card-group .card {
+    background-color: unset;
+    /* margin: 5px;
+    border-radius: 15px; */
+    border: unset;
+    color: white;
+    text-align: center
+}
+
 /*------------------------------------- Login PAGE -------------------------------------*/
 
 
