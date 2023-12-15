@@ -1,12 +1,14 @@
 @font-face {
     font-family: 'Designer';
-    src: url('../fonts/Designer.eot');
-    src: url('../fonts/Designer.eot') format('embedded-opentype'),
-        url('../fonts/Designer.woff2') format('woff2'),
-        url('../fonts/Designer.woff') format('woff'),
-        url('../fonts/Designer.ttf') format('truetype'),
-        url('../fonts/Designer.svg#Designer') format('svg');
+    src: url('../fonts/designer/Designer.eot');
+    src: url('../fonts/designer/Designer.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/designer/Designer.woff2') format('woff2'),
+        url('../fonts/designer/Designer.woff') format('woff'),
+        url('../fonts/designer/Designer.ttf') format('truetype'),
+        url('../fonts/designer/Designer.svg#Designer') format('svg');
 }
+
+
 
 
 @keyframes selectProduct {
@@ -431,7 +433,52 @@ header .nav-link:hover {
     background-image: linear-gradient(to right, #3b3b3b, #3b3b3b);
 }
 
+/*-------------------------- PAGE DETAILS NFT ---------------------------*/
+.detail .container {
+    background: rgba(128, 128, 128, 0.129) no-repeat center;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.detail .category-name {
+    font-family: 'Designer';
+}
+
+.detail main .details-nft {
+    /* height: 350px; */
+}
+
+.detail .buttons-details {
+    display: flex;
+    justify-content: end;
+    /* align-content: end; */
+
+
+}
+
+/* .detail .buttons-details .btn {} */
+
+.detail .list-details-nft {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0
+}
+
+.detail .list-details-nft li span {
+    margin: 10px 0;
+    font-family: 'Designer';
+    color: #ffc107;
+    font-size: larger;
+}
+
+.detail .list-details-nft li {
+    font-family: 'Designer';
+
+
+}
+
 /*-------------------------- MAIN  Collections Products ---------------------------*/
+
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
 
@@ -440,22 +487,7 @@ body {
     /* color: #444444; */
 }
 
-.detail .container {
-    background: rgba(128, 128, 128, 0.129) no-repeat center;
-    border-radius: 10px;
-    padding: 20px;
-}
 
-.detail .buttons-details {
-    display: flex;
-    justify-content: end;
-}
-
-/* .detail .buttons-details .btn {} */
-
-.detail .description {
-    margin-top: 10px;
-}
 
 a,
 a:hover {

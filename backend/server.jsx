@@ -1,7 +1,7 @@
 const express = require('express')
 const axios = require('axios')
 const cors = require('cors')
-const myNft = require('./nft.json')
+// const myNft = require('./nft.json')
 const lodash = require('lodash')
 const bodyParser = require('body-parser')
 
@@ -19,78 +19,69 @@ function melangerAleatoirement (nftJson) {
 }
 app.get('/collection', async (req, res) => {
     try {
-        const response = await axios.get('https://api.opensea.io/api/v2/assets', {
+        const response = await axios.get('https://api-mainnet.magiceden.dev/v2/collections', {
+            params: {
+                offset: '0',
+                limit: '500'
+            }
+        })
+        const openSeaData = melangerAleatoirement(response.data)
+
+        const uniqueCollectionData = openSeaData
+            .filter(item => item.name !== null)
+            .filter(item => item.image !== null)
+            .filter(item => item.symbol !== null)
+            .filter(item => item.name !== undefined)
+            .filter(item => item.image !== undefined)
+            .filter(item => item.symbol !== undefined)
+
+        res.json(uniqueCollectionData)
+    } catch (error) {
+        console.error('Error fetching NFT data:', error.message)
+        res.status(500).json({ error: 'Internal Server Error' }) // Send an error response
+    }
+})
+
+app.get('/collection/:symbol', async (req, res) => {
+    try {
+        const { symbol } = req.params
+        console.log(symbol)
+
+        const response = await axios.get(`https://api-mainnet.magiceden.dev/v2/collections/${symbol}/activities`, {
             params: {
                 // order_direction: 'asc',
                 offset: '0',
-                limit: '200'
-            },
-            headers: {
-                'X-API-KEY': apiKey
-            }
-        })
-        const openSeaData = response.data.assets
-        const myNftAleatoirement = melangerAleatoirement(myNft)
-
-        const collectionData = [...openSeaData, ...myNftAleatoirement]
-        // console.log('NFT Data:', nftData)
-        const uniqueCollectionData = collectionData
-            .filter(item => item.image_url !== null)
-            .filter(item => item.name !== null)
-            .filter(item => item.collection.image_url !== null)
-            .filter((item, index, self) => index === self.findIndex(t => t.image_url === item.image_url))
-            .filter((item, index, self) => index === self.findIndex(t => t.collection.name === item.collection.name))
-
-        res.json(uniqueCollectionData)
-
-        // res.render('<h1>nft</h1>')
-    } catch (error) {
-        console.error('Error fetching NFT data:', error.message)
-        res.status(500).json({ error: 'Internal Server Error' }) // Send an error response
-    }
-})
-
-app.get('/collection/:collectionID', async (req, res) => {
-    try {
-        const { collectionID } = req.params // Extract collectionID from URL
-        const response = await axios.get(`https://api.opensea.io/api/v2/chain/ethereum/contract/${collectionID}/nfts`, {
-            params: {
-                // order_direction: 'asc',
-                // offset: '200',
-                limit: '200'
-            },
-            headers: {
-                'X-API-KEY': apiKey
-            }
-        })
-
-        const nftData = response.data.nfts
-        const uniquNftData = nftData
-            .filter(item => item.image_url !== null)
-            .filter((item, index, self) => index === self.findIndex(t => t.image_url === item.image_url))
-        res.json(uniquNftData)
-
-        // res.render('<h1>nft</h1>')
-    } catch (error) {
-        console.error('Error fetching NFT data:', error.message)
-        res.status(500).json({ error: 'Internal Server Error' }) // Send an error response
-    }
-})
-
-app.get('/collection/:collectionID/:nftID', async (req, res) => {
-    try {
-        const { collectionID, nftID } = req.params // Extract collectionID from URL
-        const response = await axios.get(`https://api.opensea.io/api/v1/asset/${collectionID}/${nftID}/`, {
-
-            headers: {
-                'X-API-KEY': apiKey
+                limit: '500'
             }
         })
 
         const nftData = response.data
+        const uniquNftData = nftData
+            .filter(item => item.image !== null)
+            .filter((item, index, self) => index === self.findIndex(t => t.image === item.image))
+            .filter((item, index, self) => index === self.findIndex(t => t.tokenMint === item.tokenMint))
+            .filter(item => item.image !== undefined)
+        res.json(uniquNftData)
+        // res.render('<h1>nft</h1>')
+    } catch (error) {
+        console.error('Error fetching NFT data:', error.message)
+        res.status(500).json({ error: 'Internal Server Error' }) // Send an error response
+    }
+})
+
+app.get('/collection/:symbol/:tokenMint', async (req, res) => {
+    try {
+        const nftID = req.params.tokenMint // Extract collectionID from URL
+        // console.log(req.params)
+        console.log(nftID)
+
+        const response = await axios.get(`https://api-mainnet.magiceden.dev/v2/tokens/${nftID}/listings`)
+
+        const nftData = response.data
         // const uniquNftData = nftData
-        //     .filter(item => item.image_url !== null)
-        //     .filter((item, index, self) => index === self.findIndex(t => t.image_url === item.image_url))
+        //     .filter(item => item.length === 0)
+        //     // .filter((item, index, self) => index === self.findIndex(t => t.image_url === item.image_url))
+        console.log(nftData)
         res.json(nftData)
 
         // res.render('<h1>nft</h1>')

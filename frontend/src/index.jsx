@@ -27,8 +27,8 @@ function App () {
                 <Route path='/' element={<Home />} />
                 <Route path='/home' element={<Home />} />
                 <Route path='/collection' element={<Collection />} />
-                <Route path='/collection/:collectionID' element={<AllNftCollections />} />
-                <Route path='/collection/:collectionID/:nftID' element={<DetailNft />} />
+                <Route path='/collection/:symbol' element={<AllNftCollections />} />
+                <Route path='/collection/:symbol/:tokenMint' element={<DetailNft />} />
                 <Route path='/donate' element={<Donate />} />
                 <Route path='/account/:connexion' element={<Account />} />
                 <Route path='/about' element={<About />} />

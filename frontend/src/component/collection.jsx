@@ -32,22 +32,22 @@ const Collection = () => {
                         </div>
                     </div>
                     <div className='row'>
-                        {collectionData.map((item) => (
-                            <div key={item.id} className='col-md-6 col-lg-4 col-xl-3'>
-                                <Link to={`/collection/${item.asset_contract.address}`} className='collection-link'>
+                        {collectionData.map((item, index) => (
+                            <div key={index} className='col-md-6 col-lg-4 col-xl-3'>
+                                <Link to={`/collection/${item.symbol}`} className='collection-link'>
 
                                     <div id='product' className='single-product'>
                                         <div
                                             className='part-1'
                                             style={{
-                                                backgroundImage: `url(${item.collection.image_url})`
+                                                backgroundImage: `url(${item.image})`
                                             }}
                                         />
                                         <div className='part-2'>
                                             <h3 className='product-title'>
-                                                {item.collection.name.length > maxCharacters
-                                                    ? item.collection.name.slice(0, maxCharacters) + '...'
-                                                    : item.collection.name}
+                                                {item.name.length > maxCharacters
+                                                    ? item.name.slice(0, maxCharacters) + '...'
+                                                    : item.name}
                                             </h3>
                                         </div>
                                     </div>

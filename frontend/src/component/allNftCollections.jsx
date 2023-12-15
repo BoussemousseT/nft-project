@@ -5,14 +5,14 @@ import { useParams, Link } from 'react-router-dom'
 const AllCollections = () => {
     // Fetch and display all NFTs for the selected collection
     // You can use useParams() from React Router to get the collection id from the URL
-    const { collectionID } = useParams()
+    const { symbol } = useParams()
 
     const [nftData, setNftData] = useState([])
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`http://localhost:8080/collection/${collectionID}`)
+                const response = await axios.get(`http://localhost:8080/collection/${symbol}`)
                 setNftData(response.data)
                 // console.log('nftData', response.data)
             } catch (error) {
@@ -21,9 +21,9 @@ const AllCollections = () => {
         }
 
         fetchData()
-    }, [collectionID])
+    }, [symbol])
 
-    const maxCharacters = 18
+    // const maxCharacters = 18
     return (
         <div>
 
@@ -38,24 +38,24 @@ const AllCollections = () => {
                         </div>
                     </div>
                     <div className='row'>
-                        {nftData.map((item) => (
-                            <div key={item.id} className='col-md-6 col-lg-4 col-xl-3'>
+                        {nftData.map((item, index) => (
+                            <div key={index} className='col-md-6 col-lg-4 col-xl-3'>
 
-                                <Link to={`/collection/${collectionID}/${item.identifier}`} className='collection-link'>
+                                <Link to={`/collection/${symbol}/${item.tokenMint}`} className='collection-link'>
 
                                     <div id='product' className='single-product'>
                                         <div
                                             className='part-1'
                                             style={{
-                                                backgroundImage: ` url(${item.image_url})`
+                                                backgroundImage: ` url(${item.image})`
                                             }}
                                         />
                                         <div className='part-2'>
-                                            <h3 className='product-title'>
+                                            {/* <h3 className='product-title'>
                                                 {item.name.length > maxCharacters
                                                     ? item.name.slice(0, maxCharacters) + '...'
                                                     : item.name}
-                                            </h3>
+                                            </h3> */}
 
                                         </div>
                                     </div>
