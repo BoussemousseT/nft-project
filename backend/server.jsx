@@ -34,6 +34,7 @@ app.get('/collection', async (req, res) => {
             .filter(item => item.name !== undefined)
             .filter(item => item.image !== undefined)
             .filter(item => item.symbol !== undefined)
+            .filter(item => item.length !== 0)
 
         res.json(uniqueCollectionData)
     } catch (error) {
@@ -45,11 +46,8 @@ app.get('/collection', async (req, res) => {
 app.get('/collection/:symbol', async (req, res) => {
     try {
         const { symbol } = req.params
-        console.log(symbol)
-
         const response = await axios.get(`https://api-mainnet.magiceden.dev/v2/collections/${symbol}/activities`, {
             params: {
-                // order_direction: 'asc',
                 offset: '0',
                 limit: '500'
             }
@@ -61,8 +59,9 @@ app.get('/collection/:symbol', async (req, res) => {
             .filter((item, index, self) => index === self.findIndex(t => t.image === item.image))
             .filter((item, index, self) => index === self.findIndex(t => t.tokenMint === item.tokenMint))
             .filter(item => item.image !== undefined)
+            .filter(item => item !== 0)
+
         res.json(uniquNftData)
-        // res.render('<h1>nft</h1>')
     } catch (error) {
         console.error('Error fetching NFT data:', error.message)
         res.status(500).json({ error: 'Internal Server Error' }) // Send an error response
@@ -72,19 +71,23 @@ app.get('/collection/:symbol', async (req, res) => {
 app.get('/collection/:symbol/:tokenMint', async (req, res) => {
     try {
         const nftID = req.params.tokenMint // Extract collectionID from URL
-        // console.log(req.params)
-        console.log(nftID)
+        // console.log(nftID)
 
         const response = await axios.get(`https://api-mainnet.magiceden.dev/v2/tokens/${nftID}/listings`)
 
         const nftData = response.data
         // const uniquNftData = nftData
-        //     .filter(item => item.length === 0)
-        //     // .filter((item, index, self) => index === self.findIndex(t => t.image_url === item.image_url))
-        console.log(nftData)
-        res.json(nftData)
+        //     .filter(item => item.length !== 0)
+        //     .filter((item, index, self) => index === self.findIndex(t => t.image_url === item.image_url))
+        // console.log(nftData)
 
-        // res.render('<h1>nft</h1>')
+        if (nftData.length === 0) {
+            const response2 = await axios.get(`https://api-mainnet.magiceden.dev/v2/tokens/${nftID}`)
+            const nftData2 = response2.data
+            res.json([nftData2])
+        } else {
+            res.json(nftData)
+        }
     } catch (error) {
         console.error('Error fetching NFT data:', error.message)
         res.status(500).json({ error: 'Internal Server Error' }) // Send an error response
@@ -93,7 +96,7 @@ app.get('/collection/:symbol/:tokenMint', async (req, res) => {
 
 app.all('/nowpayments', async (req, res) => {
     const amount = req.query.name
-    console.log('amount', amount)
+    // console.log('amount', amount)
     try {
         const response = await axios.post(
             'https://api.nowpayments.io/v1/invoice',

@@ -23,6 +23,49 @@
     }
 }
 
+@keyframes collectionName {
+    0% {
+        scale: 0;
+    }
+
+    10% {
+        scale: 0;
+    }
+
+    20% {
+        scale: 0;
+    }
+
+    30% {
+        scale: 0;
+    }
+
+    40% {
+        scale: 0;
+    }
+
+    60% {
+        scale: 0;
+    }
+
+    70% {
+        scale: 0;
+    }
+
+    80% {
+        scale: 1.5;
+    }
+
+    90% {
+        scale: 1.5;
+    }
+
+    100% {
+        scale: 1;
+    }
+}
+
+
 body {
     background-color: #2b2b2b;
     color: white;
@@ -477,6 +520,14 @@ header .nav-link:hover {
 
 }
 
+/*-------------------------- PAGE all-nft-collections ---------------------------*/
+
+.all-nft-collections .page_headline {
+    animation: collectionName 3s;
+
+}
+
+
 /*-------------------------- MAIN  Collections Products ---------------------------*/
 
 
@@ -640,8 +691,10 @@ a:hover {
 
 }
 
+
 .page_headline, .btn {
     font-family: 'Designer';
+
     /* color: #ffc107; */
 }
 
