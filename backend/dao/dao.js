@@ -1,11 +1,11 @@
 'use strict'
 
-import pg from 'pg'
+const pg = require('pg')
 const Client = pg.Client
 
 let client = {}
 
-export function connect () {
+function connect () {
     client = new Client({
         host: 'localhost',
         port: 5432,
@@ -21,7 +21,7 @@ export function connect () {
     })
 }
 
-export function query (query, values, resultCallback) {
+function query (query, values, resultCallback) {
     client.query(query, values, (error, result) => {
         if (error) {
             throw error
@@ -30,6 +30,12 @@ export function query (query, values, resultCallback) {
     })
 }
 
-export function disconnect () {
+function disconnect () {
     client.end()
+}
+
+module.exports = {
+    connect,
+    query,
+    disconnect
 }

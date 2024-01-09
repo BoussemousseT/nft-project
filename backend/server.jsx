@@ -4,12 +4,18 @@ const cors = require('cors')
 // const myNft = require('./nft.json')
 const lodash = require('lodash')
 const bodyParser = require('body-parser')
+const sweetalert = require('sweetalert2')
+
+// ROUTES
+// const nftRoute = require './routes/nft.js'
+// const userRoute = require './routes/user.js'
+const { connect, query, disconnect } = require('./dao/dao.js')
 
 // const express = require('express')
 
 const app = express()
 const port = 8080
-const apiKey = 'e799484154784962a57c8860843221e6'
+// const apiKey = 'e799484154784962a57c8860843221e6'
 app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true }))
 
@@ -128,20 +134,47 @@ app.all('/nowpayments', async (req, res) => {
 
 app.post('/signup', async (req, res) => {
     const email = req.body.registeremail
-    const body = req.body
-
-    console.log('registeremail', email)
-    console.log('body', body)
+    const name = req.body.registername
+    const password = req.body.registerpass
+    connect()
+    query('INSERT INTO users(name, email, password) VALUES ($1, $2, $3)', [name, email, password], function () {
+        disconnect()
+    })
     res.redirect('http://localhost:8081/')
 })
 
 app.post('/login', async (req, res) => {
     const email = req.body.logemail
-    const body = req.body
+    const password = req.body.logpass
+    // const body = req.body
 
-    console.log('logemail', email)
-    console.log('body', body)
-    res.redirect('http://localhost:8081')
+    connect()
+    query('SELECT email, password FROM users WHERE email = $1 AND password = $2', [email, password], (resp) => {
+        if (resp.rows.length > 0) {
+            // L'utilisateur existe dans la base de données
+            disconnect()
+            res.send('http://localhost:8081')
+        } else {
+            // L'utilisateur n'existe pas dans la base de données
+            disconnect()
+            // res.send('http://localhost:8081/account/login')
+            // res.redirect('http://localhost:8081/account/login')
+
+            sweetalert.fire({
+                title: 'Invalid Input',
+                text: 'Please fill in all fields correctly.',
+                icon: 'error'
+            })
+        }
+    })
+    // query('SELECT email , password FROM users  WHERE email=$1 and password=$2', [email], [password], (resp) => {
+    //     console.log(resp.rows[0].name)
+    //     disconnect()
+    // })
+
+    // // console.log('logemail', email)
+    // // console.log('body', body)
+    // res.redirect('http://localhost:8081')
 })
 
 app.listen(port, () => {
