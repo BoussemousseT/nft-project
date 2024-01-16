@@ -153,12 +153,12 @@ app.post('/login', async (req, res) => {
         if (resp.rows.length > 0) {
             // L'utilisateur existe dans la base de données
             disconnect()
-            res.send('http://localhost:8081')
+            res.redirect('http://localhost:8081')
         } else {
             // L'utilisateur n'existe pas dans la base de données
             disconnect()
             // res.send('http://localhost:8081/account/login')
-            // res.redirect('http://localhost:8081/account/login')
+            res.redirect('http://localhost:8081/account/login')
 
             sweetalert.fire({
                 title: 'Invalid Input',
