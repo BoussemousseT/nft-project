@@ -1,9 +1,20 @@
-# NFT_project
-Équipe : Taoufik Boussemousse | Cong Tai Ho | John Waston Therane
+# NFT Platforme
+
+## Introduction
+
+C'est une plateforme dotée de plusieurs fonctionnalités pour la vente de NFT, en utilisant des modes de paiement basés sur la crypto-monnaie. 
+![NFT Platforme](
+https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj75gaWvP_ySccizNvYTCgHko8wOkXIjLJI-RKbu1-Zpeiiqb1LBi-kr8nOgD5mzDsWmxefrBB5y9aWlts7vKJNpiroaXEuiyb7I-39oLu5AYueWTMdBki_Yd73S3jVzKWmJEPuK0clc1wxPqy4Mz-DSsxgsBaBIgbf9CcN-6OusxYT7m1TJuRYY8m1S-0/s1287/projet.png "NFT Platforme")
+
+## A propos du site
+
+Parmi les fonctionnalités il y a :
+- L'intégration des API MagicEden
+- La connexion avec la base de données PostgreSQL 
+- L'intégration des modes de paiement Web3 tels que NowPayments et HivePay.
 
 
-
-Pour démarrer le projet, assurez-vous d'avoir Node.js installé.
+## Pour démarrer le projet, assurez-vous d'avoir Node.js installé.
 - https://nodejs.org/en?fbclid=IwAR20ORtU3s69wqZ4iFhMV-F6731OKrfbdJs2xgA7PxrgWYF4CpfHBM4Tmv0
 
 Étape 1 :
@@ -20,9 +31,16 @@ Pour démarrer le projet, assurez-vous d'avoir Node.js installé.
 - Dans le premier terminal, exécutez la commande suivante dans le répertoire "nft-project" : npm start
 - Cette commande démarre le projet dans le navigateur.
 <!-- - ![image](https://github.com/EchoCodeInk/w17_projet_final/assets/143127630/6600855c-8752-4884-9fca-44122180a8fb) -->
+ 
+## Crédits
 
+Dernière mise à jour le 02/08/2024
 
+------------------
 
+[@Taoufik Boussemousse]
+[@CongTai Ho]
+[@John Waston Therane]
 
 
 
